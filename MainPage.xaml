@@ -1,0 +1,176 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Desktop_089667.MainPage">
+
+    <ScrollView BackgroundColor="Black">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Label
+                Text="Test Jouw Kennis"
+                FontSize="32"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                Grid.Row="0"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                />
+            <VerticalStackLayout
+                Grid.Column="0"
+                Grid.Row="1"
+                HorizontalOptions="Center"
+                Padding="75"
+                >
+                <Label
+                    Text="Vragen"
+                    FontSize="32"
+                    HorizontalOptions="Center"
+                    Margin="0, 0, 0, 20"
+                    />
+                <Label
+                    x:Name="vraag"
+                    Text="Vraag 1:"
+                    FontSize="20"
+                    HorizontalOptions="Center"
+                     Margin="0, 0, 0, 20"
+                    />
+                <Image
+                    HorizontalOptions="Center"
+                    Source="dotnet_bot.png"
+                    SemanticProperties.Description="Vraag Image"
+                    HeightRequest="200"
+                    Margin="0, 0, 0, 10"/>
+                <Label
+                    Text="Kies Uit A, B, C"
+                    FontSize="17"
+                    HorizontalOptions="Center"
+                    />
+                <Label
+                    x:Name="optiea"
+                    Text="A: "
+                    FontSize="17"
+                    Margin="33,0,0,0"
+                    />
+                <Label
+                    x:Name="optieb"
+                    Text="B: "
+                    FontSize="17"
+                    Margin="33,0,0,0"
+                    />
+                <Label
+                    x:Name="optiec"
+                    Text="C: "
+                    FontSize="17"
+                    Margin="33, 0, 0, 10"
+                    />
+                <Entry
+                    x:Name="vraaginvoer" 
+                    BackgroundColor="White"
+                    WidthRequest="80"
+                    Margin="0, 0, 0, 10"
+                    TextColor="Black"
+                    HorizontalTextAlignment="Center"
+                    MaxLength="1"
+                    />
+                <Button
+                    Text="Antwoord"
+                    x:Name="antwoord"
+                    BackgroundColor="White"
+                    TextColor="Black"
+                    WidthRequest="120"
+                    Margin="0, 0, 0, 10"
+                    Clicked="Antwoord_Clicked"
+                    />
+                <Button
+                    Text="Reset Vragen"
+                    x:Name="reset"
+                    BackgroundColor="White"
+                    TextColor="Black"
+                    WidthRequest="120"
+                    Margin="0, 0, 0, 10"
+                    Clicked="reset_Clicked"
+                    />
+                <Label
+                    x:Name="MijnLabel"
+                    FontSize="20"
+                    HorizontalOptions="Center"
+                    />
+            </VerticalStackLayout>
+            <VerticalStackLayout
+                Grid.Column="1"
+                Grid.Row="1"
+                HorizontalOptions="Center"
+                Padding="75"
+                >
+                <Label
+                    Text="Jouw Antwoorden"
+                    FontSize="32"
+                    HorizontalOptions="Center"
+                    Margin="0, 0, 0, 20"
+                    />
+                <ListView
+                    WidthRequest="600"
+                    HeightRequest="500"
+                    RowHeight="30"
+                    BackgroundColor="White"
+                    x:Name="listviewVragen"
+                    >
+                        <ListView.Header>
+                            <HorizontalStackLayout>
+                                <Label Text="Vraag" FontSize="20" TextColor="Black" HorizontalOptions="Center"  WidthRequest="200"/>
+                                <Label Text="Vraag" FontSize="20" TextColor="Black" HorizontalOptions="Center" WidthRequest="200"/>
+                                <Label Text="Antwoord" FontSize="20" TextColor="Black" HorizontalOptions="Center" WidthRequest="200"/>
+                            </HorizontalStackLayout>
+                        </ListView.Header>
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <HorizontalStackLayout>
+                                        <Label Text="{Binding Id, StringFormat='Vraag: {0}'}" FontSize="18" WidthRequest="200" TextColor="Black" />
+                                        <Label Text="{Binding Vraag}" FontSize="18" WidthRequest="200" TextColor="Black" />
+                                        <Label Text="{Binding GoedeAntwoord}" FontSize="16" WidthRequest="200" TextColor="Black" />
+                                    </HorizontalStackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                    <Label
+                    Text="De Hoogste Score Is ...."
+                    FontSize="20"
+                    x:Name="HighScore"
+                    HorizontalOptions="Center"
+                    Margin="0, 20, 0, 0"
+                    />
+                <Label
+                    Text="Score:"
+                    FontSize="20"
+                    x:Name="Score"
+                    HorizontalOptions="Center"
+                    Margin="0, 20, 0, 0"
+                    />
+                <Label
+                    Text="Behaald Door ...."
+                    FontSize="20"
+                    x:Name="HighScoreName"
+                    HorizontalOptions="Center"
+                    Margin="0, 20, 0, 0"
+                    />
+                <Button
+                    Text="Verwijder Scores"
+                    x:Name="verwijderScores"
+                    TextColor="Black"
+                    WidthRequest="180"
+                    Margin="0, 20, 0, 0"
+                    />
+            </VerticalStackLayout>
+        </Grid>
+    </ScrollView>
+
+</ContentPage>
